@@ -1,4 +1,7 @@
 const interestingBit = (bits, mostCommon) => {
+    // This is bullshit mainly caused by having to account for equal-length split decisions
+    // Would have preferred to do bits.sort((a, b) => bits.filter(bit => bit === a).length - bits.filter(bit => bit === b).length)
+
     const ones = bits.filter(bit => Number(bit) === 1).length;
     const zeroes = bits.filter(bit => Number(bit) === 0).length;
 
@@ -31,16 +34,18 @@ const getCO2 = data => {
 
 const getElement = (data, mostOrLeastCommon, debug = false) => {
     var filteredData = data.slice(0);
-    
+
     for(let i = 0; i < filteredData[0].length; i++) {
         if(filteredData.length > 1) {
             const bits = filteredData.map(datum => datum.slice(i, i + 1));
             const criterion = interestingBit(bits, mostOrLeastCommon);
         
-            // console.log(`Bit ${i}`)
-            // console.log(`Data: ${filteredData}`);
-            // console.log(bits);
-            // console.log(`Criterion: ${criterion}`);
+            if(debug) {
+                console.log(`Bit ${i}`)
+                console.log(`Data: ${filteredData}`);
+                console.log(bits);
+                console.log(`Criterion: ${criterion}`);
+            }
             
             filteredData = filteredData.filter((_, j) => Number(bits[j]) === Number(criterion));
         }
