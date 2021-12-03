@@ -1,14 +1,14 @@
 const interestingBit = (bits, mostCommon) => {
     // This is bullshit mainly caused by having to account for equal-length split decisions
     // Would have preferred to do bits.sort((a, b) => bits.filter(bit => bit === a).length - bits.filter(bit => bit === b).length)
-
+    
     const ones = bits.filter(bit => Number(bit) === 1).length;
     const zeroes = bits.filter(bit => Number(bit) === 0).length;
 
-    const whenSame = Number(mostCommon);
-    const moreOrLess = mostCommon ? (ones > zeroes) : (zeroes > ones);
+    const sameCommonalityPreference = Number(mostCommon);
+    const mostOrLeastCommon = mostCommon ? (ones > zeroes) : 1 - (ones > zeroes);
 
-    return (ones === zeroes) ? whenSame : Number(moreOrLess);
+    return (ones === zeroes) ? sameCommonalityPreference : Number(mostOrLeastCommon);
 }
 
 const getPower = data => {
