@@ -1,0 +1,18 @@
+{
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test/index.js"
+  },
+  "type": "module",
+  "dependencies": {
+    "assert": "^2.0.0"
+  },
+  "name": "aoc2021-day03",
+  "version": "1.0.0",
+  "description": "Day 3 of the Advent of Code",
+  "repository": "https://github.com/adamhepton/AOC2021/tree/main/03",
+  "author": "Adam Hepton",
+  "license": "MIT",
+  "private": false
+}
